@@ -1,0 +1,14 @@
+h4 {{title}}
+.row
+  .col-xs-3
+    form(novalidate, name='zipForm', role='form')
+      .form-group
+        label(for='zip') Zip
+        input.form-control#zip(ng-minlength='5', ng-maxlength='10',required, autofocus, ng-model='zip',ng-pattern='/^[0-9]{5}$/', type='text', name='zip', style="background-color: {{zipForm.$valid ? 'LightCyan' : 'IndianRed'}}")
+      button.btn.btn-success(type='submit', ng-show='zipForm.$valid',ng-click='getConditions()') Get
+  .col-xs-6
+    h2(ng-show='temperature') It is currently {{temperature}} &deg;F in {{zip}}
+    h2(ng-show='weather') {{weather}}
+  .col-xs-3
+    img#icon(ng-show='icon', src='{{icon}}')
+
